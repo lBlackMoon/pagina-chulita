@@ -1,0 +1,381 @@
+/* ==================================================== */
+/* ESTILOS GENERALES Y FUENTES */
+/* ==================================================== */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfaf6;
+    color: #333;
+}
+header {
+    text-align: center; /* Vuelve a centrar todo el contenido */
+    padding: 20px;
+    background-color: #fcebe3;
+    color: #5d4037;
+    /* Las propiedades flexbox 'display: flex', 'justify-content' y 'align-items' se eliminan de aquí */
+}
+
+/* Eliminada la clase .header-content */
+
+#logo {
+    max-width: 80px; /* Logo más pequeño ahora */
+    height: auto;
+    margin-bottom: 8px; /* Espacio debajo del logo */
+    display: block; /* Asegura que margin: auto lo centre */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em; /* Un poco más pequeño para equilibrar el logo */
+    margin: 0;
+    color: #5d4037;
+    text-align: center; /* Vuelve a centrar la descripción */
+    /* Las propiedades 'flex-grow' y 'margin-top' específicas de media-queries se eliminan */
+}
+
+/* Se eliminan los ajustes para PC del header, ya que la disposición es la misma */
+@media (min-width: 768px) {
+    /* No se necesitan overrides específicos para el header en desktop en esta disposición */
+}
+
+
+/* ==================================================== */
+/* NAVEGACIÓN Y CONTENIDO */
+/* ==================================================== */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 2px solid #fcebe3;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.categoria-btn {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #d9534f;
+    background-color: #fdfaf6;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    border: 1px solid #d9534f;
+    transition: all 0.3s;
+}
+.categoria-btn:hover {
+    background-color: #d9534f;
+    color: #fff;
+}
+main {
+    padding: 20px;
+}
+.categoria-seccion {
+    margin-bottom: 40px;
+    scroll-margin-top: 100px;
+}
+.categoria-seccion h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8em;
+    color: #5d4037;
+    text-align: center;
+    border-bottom: 3px solid #fcebe3;
+    padding-bottom: 10px;
+}
+
+/* ==================================================== */
+/* PRODUCTOS */
+/* ==================================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    padding: 15px;
+    height: 100%; 
+    box-sizing: border-box;
+}
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.product-card h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    margin: 10px 0 5px 0;
+    color: #333;
+}
+.product-card .precio {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #d9534f;
+    margin: 0;
+}
+.product-link {
+    text-decoration: none; 
+    color: inherit;
+    display: block; 
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.product-link:hover {
+    transform: translateY(-5px); 
+}
+
+/* ==================================================== */
+/* PIE DE PÁGINA Y REDES SOCIALES */
+/* ==================================================== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fcebe3;
+    color: #5d4037;
+    margin-top: 30px;
+}
+.social-media {
+    margin-bottom: 15px;
+}
+.social-media a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #d9534f;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+.social-media a:hover {
+    color: #5d4037;
+}
+
+/* ==================================================== */
+/* ESTILOS PARA LA VENTANA MODAL */
+/* ==================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; 
+    padding: 20px 0;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 15px;
+    width: 95%;
+    max-width: 800px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: modal-fade-in 0.3s ease;
+    display: flex;
+    flex-direction: column; 
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        grid-template-rows: auto 1fr;
+        max-height: 90vh;
+        gap: 0 25px;
+    }
+    .modal-left {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    .modal-right {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3; 
+        overflow-y: auto;
+    }
+    .modal-instructions {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        margin-top: 15px;
+    }
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #eee;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    line-height: 28px;
+    padding: 0;
+    z-index: 10;
+}
+.modal-close-btn:hover {
+    background: #d9534f;
+    color: #fff;
+}
+
+.modal-left img#modal-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+    .modal-left img#modal-img {
+        margin-bottom: 0;
+    }
+}
+
+.modal-right h2#modal-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: #5d4037;
+    margin: 0;
+    text-align: left;
+}
+.modal-right p#modal-price {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #d9534f;
+    margin: 5px 0 15px 0;
+    text-align: left;
+}
+
+/* Formularios del modal */
+.modal-form-group {
+    display: none;
+    margin: 15px 0;
+}
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.radio-group label {
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.modal-form-group > label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+.modal-form-group input[type="text"],
+.modal-form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+}
+
+.input-hidden {
+    display: none;
+    margin-top: 8px;
+}
+
+/* Instrucciones (sección reducida) */
+.modal-instructions {
+    display: none; 
+    background: #fdfaf6;
+    border: 1px dashed #fcebe3;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.modal-instructions h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    color: #5d4037;
+}
+.modal-instructions ol { 
+    padding-left: 20px; 
+    margin-bottom: 0;
+}
+.modal-instructions li { margin-bottom: 5px; }
+
+
+/* Botones de acción */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+.modal-actions button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.modal-actions button img { width: 20px; height: 20px; }
+.modal-actions button:hover { opacity: 0.85; }
+.btn-whatsapp { background: #25D366; color: white; }
+.btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+
+/* NOTAS DEBAJO DE LOS BOTONES */
+.modal-notes {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.nota-pedido,
+.nota-pago {
+    text-align: center;
+    background: #fcebe3;
+    padding: 8px;
+    border-radius: 5px;
+}
+.nota-pago {
+    background: none;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
