@@ -32,22 +32,15 @@ header p {
     text-align: center; 
 }
 
-@media (min-width: 768px) {
-    /* Sin overrides para el header */
-}
-
 
 /* ==================================================== */
 /* NAVEGACIÓN Y CONTENIDO */
 /* ==================================================== */
 nav {
     display: flex;
-    /* ================================================== */
-    /* ¡AQUÍ ESTÁ LA CORRECCIÓN PARA MÓVIL! */
-    /* ================================================== */
-    flex-wrap: nowrap; /* No envuelve los botones */
-    overflow-x: auto; /* Permite scroll horizontal */
-    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    flex-wrap: nowrap; 
+    overflow-x: auto; /* Scroll en móvil */
+    justify-content: flex-start; /* Alineado a la izquierda en móvil */
     
     background-color: #fff;
     padding: 10px;
@@ -56,14 +49,12 @@ nav {
     top: 0;
     z-index: 100;
 
-    /* Oculta la barra de scroll para que se vea limpio */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE y Edge */
 }
 
-/* Oculta la barra de scroll para Chrome, Safari y Opera */
 nav::-webkit-scrollbar {
-    display: none;
+    display: none; /* Chrome, Safari y Opera */
 }
 
 .categoria-btn {
@@ -77,9 +68,7 @@ nav::-webkit-scrollbar {
     border-radius: 20px;
     border: 1px solid #d9534f;
     transition: all 0.3s;
-    
-    /* Evita que los botones se encojan */
-    flex-shrink: 0;
+    flex-shrink: 0; /* Evita que los botones se encojan */
 }
 .categoria-btn:hover {
     background-color: #d9534f;
@@ -207,7 +196,18 @@ footer {
     flex-direction: column; 
 }
 
+
+/* ================================================== */
+/* MEDIA QUERY PARA PC (Pantallas de 768px o más) */
+/* ================================================== */
 @media (min-width: 768px) {
+    
+    /* ¡AQUÍ ESTÁ LA CORRECCIÓN! */
+    nav {
+        justify-content: center; /* Centra los botones en PC */
+        overflow-x: hidden; /* Oculta el scroll en PC */
+    }
+
     .modal-content {
         display: grid;
         grid-template-columns: 40% 1fr;
@@ -229,11 +229,16 @@ footer {
         grid-row: 2 / 3;
         margin-top: 15px;
     }
-    /* En PC, sí lo centramos verticalmente */
     .modal-overlay {
-        align-items: center;
+        align-items: center; /* Centra el modal verticalmente en PC */
+    }
+    
+    .modal-left img#modal-img {
+        margin-bottom: 0;
+        height: 300px; /* Altura original para PC */
     }
 }
+
 
 @keyframes modal-fade-in {
     from { opacity: 0; transform: translateY(-30px); }
@@ -268,12 +273,6 @@ footer {
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
-}
-@media (min-width: 768px) {
-    .modal-left img#modal-img {
-        margin-bottom: 0;
-        height: 300px; /* Altura original para PC */
-    }
 }
 
 .modal-right h2#modal-name {
@@ -377,7 +376,7 @@ footer {
 .modal-actions button img { width: 20px; height: 20px; }
 .modal-actions button:hover { opacity: 0.85; }
 .btn-whatsapp { background: #25D366; color: white; }
-.btn-instagram { background: linear-gradient(45deg, #f0933, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+.btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
 
 /* NOTAS DEBAJO DE LOS BOTONES */
 .modal-notes {
