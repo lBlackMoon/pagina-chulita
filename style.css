@@ -9,36 +9,31 @@ body {
     color: #333;
 }
 header {
-    text-align: center; /* Vuelve a centrar todo el contenido */
+    text-align: center; 
     padding: 20px;
     background-color: #fcebe3;
     color: #5d4037;
-    /* Las propiedades flexbox 'display: flex', 'justify-content' y 'align-items' se eliminan de aquí */
 }
 
-/* Eliminada la clase .header-content */
-
 #logo {
-    max-width: 80px; /* Logo más pequeño ahora */
+    max-width: 80px; 
     height: auto;
-    margin-bottom: 8px; /* Espacio debajo del logo */
-    display: block; /* Asegura que margin: auto lo centre */
+    margin-bottom: 8px; 
+    display: block; 
     margin-left: auto;
     margin-right: auto;
 }
 
 header p {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8em; /* Un poco más pequeño para equilibrar el logo */
+    font-size: 1.8em; 
     margin: 0;
     color: #5d4037;
-    text-align: center; /* Vuelve a centrar la descripción */
-    /* Las propiedades 'flex-grow' y 'margin-top' específicas de media-queries se eliminan */
+    text-align: center; 
 }
 
-/* Se eliminan los ajustes para PC del header, ya que la disposición es la misma */
 @media (min-width: 768px) {
-    /* No se necesitan overrides específicos para el header en desktop en esta disposición */
+    /* Sin overrides para el header */
 }
 
 
@@ -176,7 +171,10 @@ footer {
     background: rgba(0, 0, 0, 0.7);
     z-index: 999;
     justify-content: center;
-    align-items: center;
+    /* ================================================== */
+    /* ¡CORRECCIÓN PARA MÓVIL! */
+    /* ================================================== */
+    align-items: flex-start; /* Cambiado de 'center' a 'flex-start' */
     overflow-y: auto; 
     padding: 20px 0;
 }
@@ -216,6 +214,10 @@ footer {
         grid-row: 2 / 3;
         margin-top: 15px;
     }
+    /* En PC, sí podemos centrarlo si queremos */
+    .modal-overlay {
+        align-items: center;
+    }
 }
 
 @keyframes modal-fade-in {
@@ -247,7 +249,10 @@ footer {
 
 .modal-left img#modal-img {
     width: 100%;
-    height: 300px;
+    /* ================================================== */
+    /* ¡CORRECCIÓN PARA MÓVIL! */
+    /* ================================================== */
+    height: 250px; /* Reducido de 300px a 250px */
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -255,6 +260,7 @@ footer {
 @media (min-width: 768px) {
     .modal-left img#modal-img {
         margin-bottom: 0;
+        height: 300px; /* Mantenemos la altura de 300px para PC */
     }
 }
 
